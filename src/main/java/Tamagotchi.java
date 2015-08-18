@@ -4,12 +4,16 @@ public class Tamagotchi {
   private Integer mSleepLevel;
   private Integer mActivityLevel;
 
+
   public Tamagotchi (String name, Integer foodLevel, Integer sleepLevel, Integer activityLevel) {
 
       mName = name;
       mFoodLevel = foodLevel;
       mSleepLevel= sleepLevel;
       mActivityLevel = activityLevel;
+
+      Integer mFoodLevel=10;
+
     }
 
     public String getName() {
@@ -28,10 +32,34 @@ public class Tamagotchi {
       return mActivityLevel;
     }
 
-    public Integer timePasses() {
-      for (Integer i=1; i<=foodLevel;i++) {
-      return (mFoodLevel - 1);
-      Thread.sleep(60);
+    // public Integer timePasses(Integer getFoodLevel) {
+    //   for (Integer i=1; i<=getFoodLevel; i++) {
+    //   return (getFoodLevel - 1);
+    //   try {
+    //   Thread.sleep(60);
+    // }
+  //   }
+  // }
+
+
+    public boolean isAlive() {
+      if ( mFoodLevel > 0 ) {
+        return true;
       }
+      else {
+        return false;
+      }
+    }
+
+    public Integer addFood() {
+      return mFoodLevel + 1;
+    }
+
+    public Integer addSleep() {
+      return mSleepLevel + 1;
+    }
+
+    public Integer addActivity() {
+      return mActivityLevel + 1;
     }
   }

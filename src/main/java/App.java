@@ -11,17 +11,39 @@ public class App {
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String,Object>();
+      model.put("name", request.session().attribute("name"));
+
       model.put("template", "templates/home.vtl");
 
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/results", (request, response) -> {
+    post("/name", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/results.vtl");
 
-      //Variables that you'd like to call on each page go here
+      String name = request.queryParams("name");
+      request.session().attribute("name", name);
+      // String foodLevelInput = request.queryParams("foodLevel");
+      // String activityLevelInput = request.queryParams("activityLevel");
+      // String sleepLevelInput = request.queryParams("sleepLevel");
+      //
+      // Integer foodLevel = Integer.parseInt(foodLevelInput);
+      // Integer activityLevel = Integer.parseInt(activityLevelInput);
+      // Integer sleepLevel = Integer.parseInt(sleepLevelInput);
 
+      Tamagotchi myTamagotchi = new Tamagotchi(name,10,10,10);
+      //, foodLevel, activityLevel, sleepLevel
+      // Integer getInitalFoodLevel = myTamagotchi.getFoodLevel();
+
+      model.put("name", name);
+      //model.put("name", request.session().attribute("name"));
+
+      // model.put("foodlevel", foodLevel);
+      // model.put("sleeplevel", sleepLevel);
+      // model.put("activitylevel", activityLevel);
+      // model.put("getInitalFoodLevel", getInitalFoodLevel);
+
+      model.put("template", "templates/tamagotchi.vtl");
       return new ModelAndView(model, layout);
 
 

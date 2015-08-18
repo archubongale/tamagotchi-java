@@ -1,0 +1,19 @@
+<p><h3>Your Tamagotchi's name is $name</h3></p>
+
+<a href="/">Go Back</a>
+
+ #if ($myTamagotchi.isAlive())
+
+
+  #if ($myTamagotchi.addFood())
+<p><h3>Your Tamagotchi's food level is now $myFoodLevel.getFoodLevel()</h3></p>
+
+#*  #elseif ($myTamagotchi.addSleep())
+<p><h3>Your Tamagotchi's sleep level is now $mySleepLevel.getSleepLevel()</h3></p>
+
+  #elseif ($myTamagotchi.addActivity())
+<p><h3>Your Tamagotchi's activity level is now $myActivityLevel.getActivityLevel()</h3></p>
+
+#else
+<p><h3>Your Tamagotchi's is dead!</h3></p>
+#end #*
